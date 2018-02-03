@@ -3,18 +3,18 @@
 class CfgPatches {
     class ADDON {
         name = COMPONENT_NAME;
-        units[] = {};
-        weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"ace_common"};
+        requiredAddons[] = {"ace_common","A3_Anims_F"};
         author = ECSTRING(common,ACETeam);
-        authors[] = {"Pabst Mirror, commy2"};
+        authors[] = {"0dr", "Crazy Brains Studio"};
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
     };
 };
 
-#include "CfgEventHandlers.hpp"
-
-#include "RscDisplayInventory.hpp"
 #include "ACE_Settings.hpp"
+#include "ACE_Melee_Animations.hpp"
+#include "CfgMoves.hpp"
+#include "CfgGesturesMale.hpp"
+#include "CfgEventHandlers.hpp"
+#include "CfgVehicles.hpp"
