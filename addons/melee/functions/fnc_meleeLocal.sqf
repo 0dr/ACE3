@@ -18,36 +18,36 @@
  */
 #include "script_component.hpp"
 
+_maxDistanceToTarget = 2.5;
+
 params ["_caller","_target","_config"];
 TRACE_3("",_caller,_target,_config);
 
 _config = (configFile >> QGVAR(Animations) >> (_config select 0) >> (_config select 1));
 TRACE_2("",_caller,_config);
-if (local _target) then {
-    //drop weapon
-    [_caller, _target] call FUNC(dropWeapon);
 
-    // Attach yourself
-    _target attachTo [_caller,[0,getNumber (_config >> "damageDistance"),0]];
-    // prevent movement
-    // play animation
-    _target playActionNow (getText (_config >> "targetAnimation"));
-    TRACE_1("",getText (_config >> "targetAnimation"));
-    // play effects
-    if (_target == ACE_player) then {
-        addCamShake [6,3,80]; // Camshake
+if ((_caller distance _target <= _maxDistanceToTarget) && local _target) then { //Magic var
+
+    //Chance to lose drop weapon //TRAIT BASED MULTIPLYER
+    if (GVAR(weaponDropToggle) && random(1) < getNumber (_config >> "dropWeaponChance") ) then {
+        [_caller, _target] call FUNC(dropWeapon);
     };
 
+    _damage = (getNumber (_config >> "damage") * GVAR(knockoutMultiplyer) / 2); // LOCAL TRAIT BASED MULTIPLYER
+    _targetKnockoutState = (_target getVariable [QGVAR(knockout),0]) + (_damage + random(_damage));
+
+    // Exit if threashold is not met
+    if (_targetKnockoutState < 1) exitWith {_target setVariable [QGVAR(knockout), _targetKnockoutState];};
+
+    // else
     [
         {
             params["_configValue","_target"];
             TRACE_1("CBA wait and execute",_this);
             // detach
-            detach _target;
-            // aplly damage
             //Apply effect
 
-            if (GVAR(takedownsLethalToggle)) then {
+            if (GVAR(meleeLethalToggle)) then {
                 _target setDamage _configValue;
             }else {
                 if (GVAR(wakeBackUp) >= (if (isPlayer _target) then [{1},{2}])) then {
@@ -68,7 +68,6 @@ if (local _target) then {
 };
 if (local _caller) then {
     // play other animation //local is target and caller switched lol
-    _caller setPos (_target modelToWorld [0, -(getNumber (_config >> "damageDistance")), 0]);
     _caller playActionNow getText (_config >> "animation");
     TRACE_1("FINAL",getText (_config >> "animation"));
 

@@ -7,7 +7,7 @@ class GVAR(Animations) {
             targetAnimation = "";
             targetTime = -1;
             targetDelay = -1;
-            damage = QUOTE((random(0.35 - 0.30) + 0.30)); //how to translate to ace wounds?
+            damage = 0.30; //how to translate to ace wounds?
             distance = -1;
             damageDistance = 1.75;
             angle = 40;
@@ -28,7 +28,7 @@ class GVAR(Animations) {
             targetAnimation = "";
             targetTime = -1;
             targetDelay = -1;
-            damage = QUOTE((random (0.30  - 0.20 )) + 0.20); //how to translate to ace wounds?
+            damage = 0.20; //how to translate to ace wounds?
             distance = -1;
             damageDistance = 1.75;
             angle = 40;
@@ -50,7 +50,7 @@ class GVAR(Animations) {
             targetAnimation = "";
             targetTime = -1;
             targetDelay = -1;
-            damage = QUOTE((random (0.45 - 0.35)) + 0.35); //how to translate to ace wounds?
+            damage = 0.35; //how to translate to ace wounds?
             distance = -1;
             damageDistance = 1.75;
             angle = 40;
@@ -67,7 +67,7 @@ class GVAR(Animations) {
             targetAnimation = "";
             targetTime = -1;
             targetDelay = -1;
-            damage = QUOTE((random (0.45 - 0.30)) + 0.30); //how to translate to ace wounds?
+            damage =0.30; //how to translate to ace wounds?
             distance = -1;
             damageDistance = 1.75;
             angle = 40;
@@ -88,7 +88,7 @@ class GVAR(Animations) {
             targetAnimation = "";
             targetTime = -1;
             targetDelay = -1;
-            damage = QUOTE((random (0.25 - 0.15)) + 0.15); //how to translate to ace wounds?
+            damage = 0.15; //how to translate to ace wounds?
             distance = -1;
             damageDistance = 1.75;
             angle = 25;
@@ -106,7 +106,7 @@ class GVAR(Animations) {
             targetAnimation = "";
             targetTime = -1;
             targetDelay = -1;
-            damage = QUOTE((random (0.25 - 0.15)) + 0.15); //how to translate to ace wounds?
+            damage = 0.15; //how to translate to ace wounds?
             distance = -1;
             damageDistance = 1.75;
             angle = 25;
@@ -123,7 +123,7 @@ class GVAR(Animations) {
             targetAnimation = "";
             targetTime = -1;
             targetDelay = -1;
-            damage = QUOTE((random (0.25 - 0.15)) + 0.15); //how to translate to ace wounds?
+            damage = 0.15; //how to translate to ace wounds?
             distance = -1;
             damageDistance = 1.75;
             angle = 25;
@@ -140,7 +140,7 @@ class GVAR(Animations) {
             targetAnimation = "";
             targetTime = -1;
             targetDelay = -1;
-            damage = QUOTE((random (0.25 - 0.15)) + 0.15); //how to translate to ace wounds?
+            damage =0.15; //how to translate to ace wounds?
             distance = -1;
             damageDistance = 1.75;
             angle = 25;
@@ -158,7 +158,7 @@ class GVAR(Animations) {
             targetAnimation = "MOCAP_Man_Act_Idle_Stay_CombatPace_Un_Prey_Grabbed_Naked_Choke_No_Contr";
             targetTime = 8;
             targetDelay = 8;
-            damage = QUOTE(1); //how to translate to ace wounds?
+            damage = 1; //how to translate to ace wounds?
             distance = 1.75;
             damageDistance = 1.20;
             angle = 35;
@@ -174,7 +174,7 @@ class GVAR(Animations) {
             targetAnimation = "MOCAP_Man_Act_Idle_Stay_CombatPace_Un_Prey_Grabbed_Legs_Neck_Twist_No_Contr";
             targetTime = 4.3;
             targetDelay = 4.3;
-            damage = QUOTE(1); //how to translate to ace wounds?
+            damage = 1; //how to translate to ace wounds?
             distance = 1.75;
             damageDistance = 1.40;
             angle = 35;
@@ -190,7 +190,7 @@ class GVAR(Animations) {
             targetAnimation = "MOCAP_Man_Act_Idle_Kneel_CombatPace_Un_Prey_Grabbed_OnBack_Naked_Choke_No_Contr";
             targetTime = 9.68;
             targetDelay = 9.68;
-            damage = QUOTE(1); //how to translate to ace wounds?
+            damage = 1; //how to translate to ace wounds?
             distance = 1.75;
             damageDistance = 1.45;
             angle = 35;
@@ -206,7 +206,7 @@ class GVAR(Animations) {
             targetAnimation = "MOCAP_Man_Act_Idle_Kneel_CombatPace_Un_Prey_Grab_ByLeftLeg_Neck_Twist_No_Contr";
             targetTime = 2.46;
             targetDelay = 2.46;
-            damage = QUOTE(1); //how to translate to ace wounds?
+            damage = 1; //how to translate to ace wounds?
             distance = 1.75;
             damageDistance = 0.97;
             angle = 35;
@@ -222,7 +222,7 @@ class GVAR(Animations) {
             targetAnimation = "MOCAP_Man_Act_Idle_Prone_CivPace_Un_Prey_Lying_Neck_Twist_No_Contr";
             targetTime = 4.0;
             targetDelay = 3.6;
-            damage = QUOTE(1); //how to translate to ace wounds?
+            damage = 1; //how to translate to ace wounds?
             distance = 1.75;
             damageDistance = 1.2;
             angle = 35;

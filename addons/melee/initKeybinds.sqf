@@ -1,12 +1,13 @@
 
 
-if (((name player) find "Finn Odrson") == -1) exitWith {INFO("These functions are currently user locked")};
+//if ( ((name player find "Finn Odrson") == -1) && ((name player find "David Bancroft") == -1) ) exitWith {INFO("These functions are currently user locked")};
 
 //GRAB
 ["ACE3 Melee", QGVAR(takedownKey), localize LSTRING(takedownKey),
 {
     // Conditions: canInteract
-    if !(GVAR(takedownsToggle)) exitWith {TRACE_1("takeDown disabled",ace_melee_takedownsToggle)};
+    //TRAIT BASED ABILTY
+    if !(GVAR(takedownsToggle)) exitWith {TRACE_1("takeDown disabled",GVAR(takedownsToggle))};
     private _target = cursorObject;
     if (!GVAR(allowBlufor) && (side _target == side ACE_player)) exitWith {LOG("Teamdamage disabled")};
     //if !([ACE_player, _target, []] call EFUNC(common,canInteractWith)) exitWith {false};
@@ -22,14 +23,29 @@ if (((name player) find "Finn Odrson") == -1) exitWith {INFO("These functions ar
 
 
 //HIT
-["ACE3 Melee", QGVAR(meleeKey), localize LSTRING(meleeKey),
+["ACE3 Melee", QGVAR(meleeHitKey), localize LSTRING(meleeHitKey),
 {
     // Conditions: canInteract
-    if !(ace_melee_meleeToggle) exitWith {TRACE_1("melee disabled",ace_melee_meleeToggle)};
+    if !(GVAR(meleeToggle)) exitWith {TRACE_1("melee disabled",GVAR(meleeToggle))};
     private _target = cursorObject;
     if (!GVAR(allowBlufor) && (side _target == side ACE_player)) exitWith {LOG("Teamdamage disabled")};
     // Statement
-    [ACE_player] call FUNC(melee);
+    [ACE_player, "punch"] call FUNC(melee);
+    false
+},
+{false},
+[0, [false, false, false]], false, 0] call CBA_fnc_addKeybind; // (empty default key)
+
+//HIT
+["ACE3 Melee", QGVAR(meleeKickKey), localize LSTRING(meleeKickKey),
+{
+    // Conditions: canInteract
+    if !(GVAR(meleeToggle)) exitWith {TRACE_1("melee disabled",GVAR(meleeToggle))};
+    private _target = cursorObject;
+    //if (player distance _target > 2) exitWith {TRACE_2("failed",_target,player distance _target)};
+    if (!GVAR(allowBlufor) && (side _target == side ACE_player)) exitWith {LOG("Teamdamage disabled")};
+    // Statement
+    [ACE_player, "kick"] call FUNC(melee);
     false
 },
 {false},

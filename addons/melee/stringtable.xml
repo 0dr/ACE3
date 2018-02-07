@@ -37,41 +37,73 @@
             <German>Der Nahkampf ist tötlich, mehrere Treffer führen zum Tod.</German>
         </Key>
 
-        <Key ID="STR_ACE_Melee_allowBluforName">
+        <Key ID="STR_ACE_Melee_knockOutMultiplyerSettingName">
+            <English>Knockout multiplyer</English>
+            <German>Knock-out Multiplikator</German>
+        </Key>
+        <Key ID="STR_ACE_Melee_knockOutMultiplyerSettingDescription">
+            <English>Multiplyer affects how fast one gets knocked out by melee attacks.</English>
+            <German>Der Multiplikator beeinflusst wie schnell eine Einheit bei Nahkampfangriffen das Bewustsein verliert.</German>
+        </Key>
+
+        <Key ID="STR_ACE_Melee_allowBluforSettingName">
             <English>Teamdamage</English>
             <German>Verbündetenbeschuss</German>
         </Key>
-        <Key ID="STR_ACE_Melee_allowBluforDescription">
+        <Key ID="STR_ACE_Melee_allowBluforSettingDescription">
             <English>Units can intentionally ore not attack their own side.</English>
             <German>Spieler können auch Verbündete angreifen.</German>
         </Key>
 
-        <Key ID="STR_ACE_Melee_knockOutTimerName">
+        <Key ID="STR_ACE_Melee_knockOutTimerSettingName">
             <English>Knockout time</English>
             <German>Zeit Bewustlos</German>
         </Key>
-        <Key ID="STR_ACE_Melee_knockOutTimerDescription">
+        <Key ID="STR_ACE_Melee_knockOutTimerSettingDescription">
             <English>Time it takes for a unit to recover from knockout.</English>
             <German>Zeitraum die eine Einheit bewustlos bleibt.</German>
         </Key>
 
-        <Key ID="STR_ACE_Melee_wakeBackUpName">
+        <Key ID="STR_ACE_Melee_wakeBackUpSettingName">
             <English>Knockout recovery</English>
             <German>Bewustlos erholung</German>
         </Key>
-        <Key ID="STR_ACE_Melee_wakeBackUpDescription">
+        <Key ID="STR_ACE_Melee_wakeBackUpSettingDescription">
             <English>Units that are allowed to recover from knockout.</English>
             <German>Gruppen die sich von der Bewustlosigkeit erholen können.</German>
         </Key>
 
-        <Key ID="STR_ACE_Melee_meleeKey">
-            <English>Melee</English>
-            <German>Nahkampf</German>
+        <Key ID="STR_ACE_Melee_weaponDropToggleSettingName">
+            <English>Weapon dropping</English>
+            <German>Waffen verlieren</German>
+        </Key>
+        <Key ID="STR_ACE_Melee_weaponDropToggleSettingDescription">
+            <English>Units who get attacket have a chance to drop their gun.</English>
+            <German>Einheiten die Angegriffen werden haben eine Chance ihre Waffe zu verlieren.</German>
+        </Key>
+
+        <Key ID="STR_ACE_Melee_meleeHitKey">
+            <English>Punch</English>
+            <German>Schlagen</German>
+        </Key>
+        <Key ID="STR_ACE_Melee_meleeKickKey">
+            <English>Kick</English>
+            <German>Treten</German>
         </Key>
         <Key ID="STR_ACE_Melee_takedownKey">
             <English>Takedown</English>
             <German>Würgegriffe</German>
         </Key>
+
+        <Key ID="STR_ACE_Melee_takedown">
+            <English>Takedown</English>
+            <German>Würgegriff</German>
         </Key>
+
+        <Key ID="STR_ACE_Melee_Category_Melee">
+            <English>ACE Melee</English>
+            <German>ACE Melee</German>
+        </Key>
+
     </Package>
 </Project>
