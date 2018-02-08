@@ -19,8 +19,7 @@
  */
 #include "script_component.hpp"
 
-params["_caller",["_type","punch"]];
-_target = cursorTarget;
+params["_caller","_target",["_type","punch"]];
 _currentWeapon = currentWeapon _caller;
 _config = nil;
 _animationParentName = "";

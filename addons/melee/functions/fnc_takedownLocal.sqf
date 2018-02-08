@@ -44,11 +44,11 @@ if (local _target) then {
             TRACE_1("CBA wait and execute",_this);
             // detach
             detach _target;
-            // aplly damage
+            if !(alive _target) exitWith {};
             //Apply effect
 
             if (GVAR(takedownsLethalToggle)) then {
-                _target setDamage _configValue;
+                [_target,1,"head","punch"] call EFUNC(medical,addDamageToUnit);
             }else {
                 if (GVAR(wakeBackUp) >= (if (isPlayer _target) then [{1},{2}])) then {
                     [_target, true, GVAR(knockOutTimer), true] call ace_medical_fnc_setUnconscious;

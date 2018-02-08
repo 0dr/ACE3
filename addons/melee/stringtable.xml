@@ -46,13 +46,22 @@
             <German>Der Multiplikator beeinflusst wie schnell eine Einheit bei Nahkampfangriffen das Bewustsein verliert.</German>
         </Key>
 
-        <Key ID="STR_ACE_Melee_allowBluforSettingName">
-            <English>Teamdamage</English>
-            <German>Verbündetenbeschuss</German>
+        <Key ID="STR_ACE_Melee_allowTeamdamageTakedownSettingName">
+            <English>Takedown friendlyfire</English>
+            <German>Würgegriff Verbündetenbeschuss</German>
         </Key>
-        <Key ID="STR_ACE_Melee_allowBluforSettingDescription">
-            <English>Units can intentionally ore not attack their own side.</English>
-            <German>Spieler können auch Verbündete angreifen.</German>
+        <Key ID="STR_ACE_Melee_allowTeamdamageTakedownSettingDescription">
+            <English>Units can intentionally ore not attack their own side with takedowns.</English>
+            <German>Spieler können auch Verbündete mit Würgegriffen angreifen.</German>
+        </Key>
+
+        <Key ID="STR_ACE_Melee_allowTeamdamageMeleeSettingName">
+            <English>Melee friendlyfire</English>
+            <German>Nahkampf Verbündetenbeschuss</German>
+        </Key>
+        <Key ID="STR_ACE_Melee_allowTeamdamageMeleeSettingDescription">
+            <English>Units can intentionally ore not attack their own side with punches and kicks.</English>
+            <German>Spieler können auch Verbündete mit Tritten und Schlägen angreifen.</German>
         </Key>
 
         <Key ID="STR_ACE_Melee_knockOutTimerSettingName">

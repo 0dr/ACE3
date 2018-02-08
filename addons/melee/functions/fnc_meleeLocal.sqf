@@ -34,42 +34,48 @@ if ((_caller distance _target <= _maxDistanceToTarget) && local _target) then { 
     };
 
     _damage = (getNumber (_config >> "damage") * GVAR(knockoutMultiplyer) / 2); // LOCAL TRAIT BASED MULTIPLYER
-    _targetKnockoutState = (_target getVariable [QGVAR(knockout),0]) + (_damage + random(_damage));
+    TRACE_1("damage / 2", _damage);
 
-    // Exit if threashold is not met
-    if (_targetKnockoutState < 1) exitWith {_target setVariable [QGVAR(knockout), _targetKnockoutState];};
+    _targetKnockoutState = (_target getVariable [QGVAR(knockout),0]) + (_damage + random(_damage));
+    // Exit if threashold is not met AND we actually care about knockout
+    if (!GVAR(meleeLethalToggle) && _targetKnockoutState < 1) exitWith {
+        TRACE_2("exit smaller 1",_targetKnockoutState, GVAR(meleeLethalToggle));
+        _target setVariable [QGVAR(knockout), _targetKnockoutState];
+    };
 
     // else
     [
         {
             params["_configValue","_target"];
             TRACE_1("CBA wait and execute",_this);
-            // detach
-            //Apply effect
 
+            if !(alive _target) exitWith {TRACE_1("exit WaE, target is not alive",_target)};
+
+            //TO-DO:  Allwo for different hits
+            _hit = "body";
+            //
             if (GVAR(meleeLethalToggle)) then {
-                _target setDamage _configValue;
-            }else {
+                //_target setDamage _configValue;
+                [_target, _configValue,_hit,"punch"] call EFUNC(medical,addDamageToUnit);
+            }else{
                 if (GVAR(wakeBackUp) >= (if (isPlayer _target) then [{1},{2}])) then {
                     [_target, true, GVAR(knockOutTimer), true] call ace_medical_fnc_setUnconscious;
                 }else{
                     [_target, true] call FUNC(setUnconsciousAI);
                 };
-                //kill ai that wont recover cus cheaper on the game
-                //_target setDamage _configValue;
-
-
             };
         },
-        [getNumber (_config >> "damage"),_target],
-        getNumber (_config >> "targetTime") max 1
+        [_damage * 2,_target],
+        getNumber (_config >> "time") max 1
     ] call CBA_fnc_waitAndExecute;
-    TRACE_1("END",true);
+    TRACE_1("local _target","");
 };
 if (local _caller) then {
     // play other animation //local is target and caller switched lol
-    _caller playActionNow getText (_config >> "animation");
-    TRACE_1("FINAL",getText (_config >> "animation"));
+    _animation = getText (_config >> "animation");
+    TRACE_1("local _caller",_animation);
+    _caller playActionNow _animation;
+
 
 };
 

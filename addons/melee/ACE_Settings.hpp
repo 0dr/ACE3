@@ -27,12 +27,19 @@ class ACE_Settings {
         displayName = CSTRING(meleeLethalSettingName);
         description = CSTRING(meleeLethalSettingDescription);
     };
-    class GVAR(allowBlufor) {
+    class GVAR(allowTeamdamageTakedown) {
         category = CSTRING(Category_Melee);
         value = 1;
         typeName = "BOOL";
-        displayName = CSTRING(allowBluforSettingName);
-        description = CSTRING(allowBluforSettingDescription);
+        displayName = CSTRING(allowTeamdamageTakedownSettingName);
+        description = CSTRING(allowTeamdamageTakedownSettingDescription);
+    };
+    class GVAR(allowTeamdamageMelee) {
+        category = CSTRING(Category_Melee);
+        value = 1;
+        typeName = "BOOL";
+        displayName = CSTRING(allowTeamdamageMeleeSettingName);
+        description = CSTRING(allowTeamdamageMeleeSettingDescription);
     };
     class GVAR(knockOutTimer) {
         category = CSTRING(Category_Melee);

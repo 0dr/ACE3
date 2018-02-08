@@ -9,7 +9,7 @@
     //TRAIT BASED ABILTY
     if !(GVAR(takedownsToggle)) exitWith {TRACE_1("takeDown disabled",GVAR(takedownsToggle))};
     private _target = cursorObject;
-    if (!GVAR(allowBlufor) && (side _target == side ACE_player)) exitWith {LOG("Teamdamage disabled")};
+    if (!GVAR(allowTeamdamageTakedown) && (side _target == side ACE_player)) exitWith {LOG("Teamdamage disabled")};
     //if !([ACE_player, _target, []] call EFUNC(common,canInteractWith)) exitWith {false};
     if !(_target isKindOf "CAManBase") exitWith {TRACE_1("Target is not CAManBase",typeOf _target)};
     if ((_target distance ACE_player) > getNumber (configFile >> "CfgVehicles" >> "CAManBase" >> "ACE_Actions" >> "ACE_MainActions" >> QGVAR(takedown) >> "distance")) exitWith {TRACE_1("Distance too large",ACE_player distance _target)};
@@ -28,9 +28,9 @@
     // Conditions: canInteract
     if !(GVAR(meleeToggle)) exitWith {TRACE_1("melee disabled",GVAR(meleeToggle))};
     private _target = cursorObject;
-    if (!GVAR(allowBlufor) && (side _target == side ACE_player)) exitWith {LOG("Teamdamage disabled")};
+    if (!GVAR(allowTeamdamageMelee) && (side _target == side ACE_player)) exitWith {LOG("Teamdamage disabled")};
     // Statement
-    [ACE_player, "punch"] call FUNC(melee);
+    [ACE_player,_target,"punch"] call FUNC(melee);
     false
 },
 {false},
@@ -43,9 +43,9 @@
     if !(GVAR(meleeToggle)) exitWith {TRACE_1("melee disabled",GVAR(meleeToggle))};
     private _target = cursorObject;
     //if (player distance _target > 2) exitWith {TRACE_2("failed",_target,player distance _target)};
-    if (!GVAR(allowBlufor) && (side _target == side ACE_player)) exitWith {LOG("Teamdamage disabled")};
+    if (!GVAR(allowTeamdamageMelee) && (side _target == side ACE_player)) exitWith {LOG("Teamdamage disabled")};
     // Statement
-    [ACE_player, "kick"] call FUNC(melee);
+    [ACE_player,_target,"kick"] call FUNC(melee);
     false
 },
 {false},
