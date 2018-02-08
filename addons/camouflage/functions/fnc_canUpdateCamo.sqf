@@ -22,6 +22,9 @@ params ["_caller","_targetCamoType"];
 //
 if (isNil '_caller' || isNil '_targetCamoType' || {_targetCamoType == ""}) exitWith {};
 
+// skip for identical camo
+//if () exitWith {};
+
 if (!GVAR(reallistic)) exitWith {
     TRACE_1("No check needed",GVAR(reallistic));
     true
@@ -33,34 +36,38 @@ _pos = position _caller;
 _list = [];
 _radius = 4;
 _step = 90;
-_return = for "_i" from 0 to  360 Step _step do {
+_return = false;
+for "_i" from 0 to  360 Step _step do {
 	_newPos = _pos vectorAdd [_radius * cos _i,_radius * sin _i,0];
     _surfaceType = surfaceType _newPos;
     _surfaceType = _surfaceType select [1,count _surfaceType -1];
     if !(_surfaceType in _list) then {
         _list pushBack _surfaceType;
-        TRACE_1("",_surfaceType);
-    	if (_surfaceType in getArray ( configFile >> "CfgSurfaces" >> _surfaceType >> "availableCamo")) exitWith {
+        _camo = getArray ( configFile >> "CfgSurfaces" >> _surfaceType >> "availableCamo");
+        TRACE_2("",_surfaceType,_camo);
+    	if (_targetCamoType in _camo) exitWith {
             TRACE_1("available camo is present ",_surfaceType);
-            true
+            _return = true;
         };
     };
-    false
+    if (_return) exitWith {};
 };
 TRACE_1("",_return);
 // if we cant update to what we want but we want an intermediat type check for the missing dif
 if (!_return && _targetCamoType == "SEMIARID") then {
     _intermediateType = "";
     switch (true) do {
-        case ("lsh" find uniform _caller >-1): {
+        case ( (uniform _caller find "lsh") >-1): {
             _intermediateType = "ARID";
         };
-        case ("ard" find uniform _caller >-1): {
+        case ( (uniform _caller find "ard")  >-1): {
             _intermediateType = "LUSH";
         };
     };
     TRACE_1("checking for intermediate types",_intermediateType);
-    _return = [_caller, _intermediateType] call FUNC(canUpdateCamo);
+    if !(_intermediateType == "") then {
+        _return = [_caller, _intermediateType] call FUNC(canUpdateCamo);
+    };
 };
 TRACE_1("final",_return);
 _return

@@ -3,7 +3,7 @@ class CfgSurfaces {
     class Water;
 
     class GdtDirt: Default {
-        availableCamo[] = {"SEMIARID"};
+        availableCamo[] = {"SEMIARID","ARID","LUSH"};
     };
     class GdtField: Default {
         availableCamo[] = {"ARID"}; //??
