@@ -63,7 +63,7 @@ class ACE_Settings {
         typeName = "SCALAR";
         displayName = CSTRING(knockOutMultiplyerSettingName);
         description = CSTRING(knockOutMultiplyerSettingDescription);
-        sliderSettings[] = {0, 10, 1, 0.2};
+        sliderSettings[] = {0, 10, 1, 1};
     };
     class GVAR(weaponDropToggle) {
         category = CSTRING(Category_Melee);

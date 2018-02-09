@@ -9,10 +9,10 @@
  *  1: ConfigChild <STRING>
  *
  * Return Value:
- * Succesful treatment started <BOOL>
+ * None
  *
  * Example:
- * [[bob, kevin], 5, 5] call ACE_medical_fnc_treatmentAdvanced_surgicalKit_onProgress
+ *
  *
  * Public: No
  */
@@ -28,12 +28,17 @@ TRACE_2("",_caller,_config);
 
 if ((_caller distance _target <= _maxDistanceToTarget) && local _target) then { //Magic var
 
-    //Chance to lose drop weapon //TRAIT BASED MULTIPLYER
-    if (GVAR(weaponDropToggle) && random(1) < getNumber (_config >> "dropWeaponChance") ) then {
+    //
+    _unitMeleeSkill = _caller getVariable [QGVAR(meleeSkill),1];
+    _unitDisarmSkill = _caller getVariable [QGVAR(disarmSkill),1];
+    TRACE_2("",_unitMeleeSkill,_unitDisarmSkill);
+
+    //Chance to lose drop weapon
+    if (GVAR(weaponDropToggle) && random(1) < (getNumber (_config >> "dropWeaponChance") * _unitDisarmSkill) ) then {
         [_caller, _target] call FUNC(dropWeapon);
     };
 
-    _damage = (getNumber (_config >> "damage") * GVAR(knockoutMultiplyer) / 2); // LOCAL TRAIT BASED MULTIPLYER
+    _damage = (getNumber (_config >> "damage") * GVAR(knockoutMultiplyer) * _unitMeleeSkill / 2);
     TRACE_1("damage / 2", _damage);
 
     _targetKnockoutState = (_target getVariable [QGVAR(knockout),0]) + (_damage + random(_damage));
