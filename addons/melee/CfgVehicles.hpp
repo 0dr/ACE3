@@ -5,8 +5,8 @@ class CfgVehicles {
             class ACE_MainActions {
                 class GVAR(takedown) {
                     displayName = CSTRING(takedown);
-                    condition = QUOTE(isAlive _target && [_target] call EFUNC(common,isAwake));
-                    statement = QUOTE([ARR2(_player, _target)] call FUNC(takedown));
+                    condition = QUOTE(Alive _target && [_target] call EFUNC(common,isAwake));
+                    statement = QUOTE([ARR_2(_player, _target)] call FUNC(takedown));
                     distance = 2;
                     showDisabled = 0;
                     priority = 2;
