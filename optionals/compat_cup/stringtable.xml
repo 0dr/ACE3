@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project name="ACE">
+    <Package name="Cup_Camouflage">
+        <Key ID="STR_ACE_Compat_ADR_97_P90_TR_Black_Name">
+            <English>P90 TR (Black)</English>
+            <German>P90 TR (Schwarz)</German>
+        </Key>
+    </Package>
+</Project>

@@ -14,10 +14,10 @@
  * Public: Yes
 */
 #include "script_component.hpp"
-
+params["_caller","_target"];
 //Preserve uniform items
 //
-_uniform = uniform ACE_player;
+_uniform = uniform _target;
 TRACE_1("",_uniform);
 _uniformStrip = _uniform select [3,count _uniform -1];
 TRACE_1("",_uniformStrip);

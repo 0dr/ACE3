@@ -6,7 +6,7 @@ class CfgSurfaces {
         availableCamo[] = {"SEMIARID","ARID","LUSH"};
     };
     class GdtField: Default {
-        availableCamo[] = {"ARID"}; //??
+        availableCamo[] = {"ARID"};
     };
     class GdtForest: Default {
         availableCamo[] = {"JUNGLE"};
@@ -21,16 +21,16 @@ class CfgSurfaces {
         availableCamo[] = {"ARID"};
     };
     class GdtGrassLong: Default {
-        availableCamo[] = {"LUSH"}; //??
+        availableCamo[] = {"LUSH"};
     };
     class GdtGrassShort: Default {
         availableCamo[] = {"LUSH"};
     };
-    class GdtGrassTall: Default { //!!!
+    class GdtGrassTall: Default {
         availableCamo[] = {"JUNGLE"};
     };
     class GdtGrassWild: Default {
-        availableCamo[] = {"LUSH"}; //??
+        availableCamo[] = {"LUSH"};
     };
     class GdtMarsh: Default {
         availableCamo[] = {"ARID"};
@@ -63,11 +63,9 @@ class CfgSurfaces {
         availableCamo[] = {"ARID"};
     };
     class GdtWeed: Default {
-        availableCamo[] = {"LUSH"}; //??
+        availableCamo[] = {"LUSH"};
     };
     class GdtWildField: Default {
-        availableCamo[] = {"SEMIARID"}; //??
+        availableCamo[] = {"SEMIARID"};
     };
-
-
 };

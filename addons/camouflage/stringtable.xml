@@ -1,9 +1,49 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACE">
-    <Package name="Chemlights">
-        <Key ID="STR_ACE_Chemlights_Action_Chemlights">
-            <English>Chemlights</English>
-            <German>Knicklichter</German>
+    <Package name="Camouflage">
+        <Key ID="STR_ACE_Camouflage_DisplayName">
+            <English>Camouflage</English>
+            <German>Tarnzeug</German>
         </Key>
+
+        <Key ID="STR_ACE_Camouflage_Enabled_DisplayName">
+            <English>Enable Camouflage</English>
+            <German>Aktiviere Tarnzeug</German>
+        </Key>
+        <Key ID="STR_ACE_Camouflage_Enabled_Description">
+            <English>Allows Units equpped with a Ghillisuit to update its camo.</English>
+            <German>Erlaubt es Einheiten ihren Ghilliesuittarn zu ändern.</German>
+        </Key>
+
+        <Key ID="STR_ACE_Camouflage_Realistic_DisplayName">
+            <English>Realistic conditions</English>
+            <German>Realistische Bedingungen</German>
+        </Key>
+        <Key ID="STR_ACE_Camouflage_Realistic_Description">
+            <English>To change the camo the unit has to be near suitable material.</English>
+            <German>Einheiten können nur mit geeignetem Material ihren Tarn anpassen.</German>
+        </Key>
+
+        <Key ID="STR_ACE_Camouflage_UpdateCamo">
+            <English>Camouflage</English>
+            <German>Tarnung</German>
+        </Key>
+        <Key ID="STR_ACE_Camouflage_Arid">
+            <English>Arid</English>
+            <German>Dürr</German>
+        </Key>
+        <Key ID="STR_ACE_Camouflage_SemiArid">
+            <English>Semi Arid</English>
+            <German>Grün gemischt</German>
+        </Key>
+        <Key ID="STR_ACE_Camouflage_Lush">
+            <English>Lush</English>
+            <German>Grün</German>
+        </Key>
+        <Key ID="STR_ACE_Camouflage_Jungle">
+            <English>Jungle</English>
+            <German>Dschungel</German>
+        </Key>
+
     </Package>
 </Project>

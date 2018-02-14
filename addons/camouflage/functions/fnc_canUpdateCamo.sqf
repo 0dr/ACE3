@@ -17,13 +17,32 @@
 
 
 //
-params ["_caller","_targetCamoType"];
+params ["_caller", "_target", "_targetCamoType"];
 
 //
-if (isNil '_caller' || isNil '_targetCamoType' || {_targetCamoType == ""}) exitWith {};
+if (isNil '_caller' || isNil '_target'|| isNil '_targetCamoType' || {_targetCamoType == ""}) exitWith {false};
 
 // skip for identical camo
-//if () exitWith {};
+_skip = false;
+_uniform = uniform _target;
+switch (_targetCamoType) do {
+
+    case "ARID": {
+        if (_uniform find "_ard"> -1) then {_skip = true}
+    };
+    case "SEMIARID" : {
+        if (_uniform find "_sard"  > -1) then {_skip = true}
+    };
+    case "LUSH": {
+        if (_uniform find "_lsh" > -1) then {_skip = true}
+    };
+    case "JUNGLE": {
+        if (_uniform find "_tna" > -1) then {_skip = true}
+    };
+    default {_skip = false};
+};
+TRACE_1("",_skip);
+if (_skip) exitWith {false};
 
 if (!GVAR(reallistic)) exitWith {
     TRACE_1("No check needed",GVAR(reallistic));
@@ -32,7 +51,7 @@ if (!GVAR(reallistic)) exitWith {
 
 //
 TRACE_1("",_targetCamoType);
-_pos = position _caller;
+_pos = position _target;
 _list = [];
 _radius = 4;
 _step = 90;
@@ -57,16 +76,16 @@ TRACE_1("",_return);
 if (!_return && _targetCamoType == "SEMIARID") then {
     _intermediateType = "";
     switch (true) do {
-        case ( (uniform _caller find "lsh") >-1): {
+        case ( (uniform _target find "lsh") >-1): {
             _intermediateType = "ARID";
         };
-        case ( (uniform _caller find "ard")  >-1): {
+        case ( (uniform _target find "ard")  >-1): {
             _intermediateType = "LUSH";
         };
     };
     TRACE_1("checking for intermediate types",_intermediateType);
     if !(_intermediateType == "") then {
-        _return = [_caller, _intermediateType] call FUNC(canUpdateCamo);
+        _return = [_caller, _target, _intermediateType] call FUNC(canUpdateCamo);
     };
 };
 TRACE_1("final",_return);
