@@ -15,8 +15,7 @@
 */
 #include "script_component.hpp"
 params["_caller","_target"];
-//Preserve uniform items
-//
+if !(GVAR(enabled)) exitWith {false};
 _uniform = uniform _target;
 TRACE_1("",_uniform);
 _uniformStrip = _uniform select [3,count _uniform -1];
