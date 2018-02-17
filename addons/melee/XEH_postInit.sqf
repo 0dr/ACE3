@@ -21,3 +21,4 @@ if (!hasInterface) exitWith {};
 
 
 //
+GVAR(fighting) = false;

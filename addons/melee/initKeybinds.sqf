@@ -27,6 +27,7 @@
 {
     // Conditions: canInteract
     if !(GVAR(meleeToggle)) exitWith {TRACE_1("melee disabled",GVAR(meleeToggle))};
+    if (GVAR(fighting)) exitWith {TRACE_1("Unit is already performing a Hit",GVAR(fighting))};
     private _target = cursorObject;
     if (!GVAR(allowTeamdamageMelee) && (side _target == side ACE_player)) exitWith {LOG("Teamdamage disabled")};
     // Statement
@@ -41,6 +42,7 @@
 {
     // Conditions: canInteract
     if !(GVAR(meleeToggle)) exitWith {TRACE_1("melee disabled",GVAR(meleeToggle))};
+    if (GVAR(fighting)) exitWith {TRACE_1("Unit is already performing a Hit",GVAR(fighting))};
     private _target = cursorObject;
     //if (player distance _target > 2) exitWith {TRACE_2("failed",_target,player distance _target)};
     if (!GVAR(allowTeamdamageMelee) && (side _target == side ACE_player)) exitWith {LOG("Teamdamage disabled")};

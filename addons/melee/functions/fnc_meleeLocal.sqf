@@ -22,12 +22,13 @@ _maxDistanceToTarget = 2.5;
 
 params ["_caller","_target","_config"];
 TRACE_3("",_caller,_target,_config);
-
+GVAR(fighting) = true;
 _config = (configFile >> QGVAR(Animations) >> (_config select 0) >> (_config select 1));
 TRACE_2("",_caller,_config);
 
 if ((_caller distance _target <= _maxDistanceToTarget) && local _target) then { //Magic var
-
+    // Play Hit Sound
+        //playSound3D
     //
     _unitMeleeSkill = _caller getVariable [QGVAR(meleeSkill),1];
     _unitDisarmSkill = _caller getVariable [QGVAR(disarmSkill),1];
@@ -53,7 +54,7 @@ if ((_caller distance _target <= _maxDistanceToTarget) && local _target) then { 
         {
             params["_configValue","_target"];
             TRACE_1("CBA wait and execute",_this);
-
+            GVAR(fighting) = false;
             if !(alive _target) exitWith {TRACE_1("exit WaE, target is not alive",_target)};
 
             //TO-DO:  Allwo for different hits
@@ -76,11 +77,20 @@ if ((_caller distance _target <= _maxDistanceToTarget) && local _target) then { 
     TRACE_1("local _target","");
 };
 if (local _caller) then {
+    // Play Swing Sound
+        //playSound3D
     // play other animation //local is target and caller switched lol
     _animation = getText (_config >> "animation");
     TRACE_1("local _caller",_animation);
     _caller playActionNow _animation;
-
+    // Reset fight state
+    [
+        {
+            GVAR(fighting) = false;
+        },
+        [],
+        getNumber (_config >> "time") max 1
+    ] call CBA_fnc_waitAndExecute;
 
 };
 
