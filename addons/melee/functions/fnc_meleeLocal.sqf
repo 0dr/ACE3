@@ -28,7 +28,7 @@ TRACE_2("",_caller,_config);
 
 if ((_caller distance _target <= _maxDistanceToTarget) && local _target) then { //Magic var
     // Play Hit Sound
-        //playSound3D
+        playSound3D [selectRandom getArray (_config >> ""), _target];
     //
     _unitMeleeSkill = _caller getVariable [QGVAR(meleeSkill),1];
     _unitDisarmSkill = _caller getVariable [QGVAR(disarmSkill),1];

@@ -13,6 +13,7 @@ class GVAR(Animations) {
             angle = 40;
             dropWeaponChance = 0.35;
             velocity = 10;
+            sounds[] = {QGVAR(hit_noimpact_01),QGVAR(hit_noimpact_02),QGVAR(hit_noimpact_02)};
         };
         class GVAR(rightCurve): GVAR(directCurve) {
             animation = "MOCAP_Man_Act_Rfl_Stroke_RightCurve";
@@ -34,6 +35,7 @@ class GVAR(Animations) {
             angle = 40;
             dropWeaponChance = 0.35;
             velocity = 10;
+            sounds[] = {QGVAR(hit_noimpact_01),QGVAR(hit_noimpact_02),QGVAR(hit_noimpact_02)};
         };
         class GVAR(leftCurve): GVAR(directCurve) {
             animation = "MOCAP_Man_Act_Pstl_Stroke_LeftCurve";

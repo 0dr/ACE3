@@ -6,7 +6,7 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"ace_common","A3_Anims_F"};
         author = ECSTRING(common,ACETeam);
-        authors[] = {"0dr", "Crazy Brains Studio"};
+        authors[] = {"0dr", "Crazy Brains Studio","Glenn Lambert"};
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
     };
@@ -18,3 +18,4 @@ class CfgPatches {
 #include "CfgGesturesMale.hpp"
 #include "CfgEventHandlers.hpp"
 #include "CfgVehicles.hpp"
+#include "CfgSounds.hpp"
