@@ -18,20 +18,25 @@
  */
 #include "script_component.hpp"
 
+#define HURTSOUNDS [QGVAR(hit_impact),QGVAR(impact_01),QGVAR(impact_02),QGVAR(impact_03),QGVAR(impact_04),QGVAR(impact_05),QGVAR(impact_06)]
+#define HITSOUNDS [QGVAR(hit_noimpact_01),QGVAR(hit_noimpact_02),QGVAR(hit_noimpact_03),QGVAR(hit_noimpact_04)]
+#define KICKSOUNDS [QGVAR(kick_noimpact_01),QGVAR(kick_noimpact_02),QGVAR(kick_noimpact_03)]
+
 _maxDistanceToTarget = 2.5;
 
 params ["_caller","_target","_config"];
 TRACE_3("",_caller,_target,_config);
-GVAR(fighting) = true;
+_caller setVariable [QGVAR(fighting), false];
 _config = (configFile >> QGVAR(Animations) >> (_config select 0) >> (_config select 1));
 TRACE_2("",_caller,_config);
 
 if ((_caller distance _target <= _maxDistanceToTarget) && local _target) then { //Magic var
     // Play Hit Sound
-        playSound3D [selectRandom getArray (_config >> ""), _target];
+        [selectRandom HURTSOUNDS, position _target] call EFUNC(common,playConfigSound3D);
     //
     _unitMeleeSkill = _caller getVariable [QGVAR(meleeSkill),1];
     _unitDisarmSkill = _caller getVariable [QGVAR(disarmSkill),1];
+    _unitHasKnive = "knife" in (uniformItems _caller + vestItems _caller);
     TRACE_2("",_unitMeleeSkill,_unitDisarmSkill);
 
     //Chance to lose drop weapon
@@ -39,7 +44,7 @@ if ((_caller distance _target <= _maxDistanceToTarget) && local _target) then { 
         [_caller, _target] call FUNC(dropWeapon);
     };
 
-    _damage = (getNumber (_config >> "damage") * GVAR(knockoutMultiplyer) * _unitMeleeSkill / 2);
+    _damage = (getNumber (_config >> "damage") * GVAR(knockoutMultiplyer) * _unitMeleeSkill * (if (_unitHasKnive) then {2.6}else{1}));
     TRACE_1("damage / 2", _damage);
 
     _targetKnockoutState = (_target getVariable [QGVAR(knockout),0]) + (_damage + random(_damage));
@@ -58,7 +63,7 @@ if ((_caller distance _target <= _maxDistanceToTarget) && local _target) then { 
             if !(alive _target) exitWith {TRACE_1("exit WaE, target is not alive",_target)};
 
             //TO-DO:  Allwo for different hits
-            _hit = "body";
+            _hit = selectRandom ["head", "body", "body", "body", "hand_l", "hand_r", "leg_l", "leg_r"];
             //
             if (GVAR(meleeLethalToggle)) then {
                 //_target setDamage _configValue;
@@ -76,9 +81,14 @@ if ((_caller distance _target <= _maxDistanceToTarget) && local _target) then { 
     ] call CBA_fnc_waitAndExecute;
     TRACE_1("local _target","");
 };
+
 if (local _caller) then {
     // Play Swing Sound
-        //playSound3D
+    if (str _config find "punch" > -1) then {
+        [selectRandom HITSOUNDS, position _caller] call EFUNC(common,playConfigSound3D);
+    }else{
+        [selectRandom KICKSOUNDS, position _caller] call EFUNC(common,playConfigSound3D);
+    };
     // play other animation //local is target and caller switched lol
     _animation = getText (_config >> "animation");
     TRACE_1("local _caller",_animation);
@@ -86,9 +96,10 @@ if (local _caller) then {
     // Reset fight state
     [
         {
-            GVAR(fighting) = false;
+            params["_player"];
+            _player setVariable [QGVAR(fighting), false];
         },
-        [],
+        [_caller],
         getNumber (_config >> "time") max 1
     ] call CBA_fnc_waitAndExecute;
 

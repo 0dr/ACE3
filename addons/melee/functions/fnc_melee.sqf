@@ -19,7 +19,7 @@
  */
 #include "script_component.hpp"
 
-params["_caller","_target",["_type","punch"]];
+params["_caller",["_target", objNull],["_type","punch"]];
 _currentWeapon = currentWeapon _caller;
 _config = nil;
 _animationParentName = "";
@@ -63,7 +63,7 @@ _config = [_animationParentName,configName _config];
 if (isNil "_config") exitWith {LOG("COULDNT FIND A PROPPER ANIMATION");};
 TRACE_1("output",_config);
 //inform target of beein taken down
-if (local _target) then {
+if (isNull _target || local _target) then {
     //if it's local play everything in one
     [QGVAR(melee),[_caller,_target,_config]] call CBA_fnc_localEvent;
 } else {

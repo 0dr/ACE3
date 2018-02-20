@@ -38,6 +38,8 @@ if (local _target) then {
         addCamShake [6,3,80]; // Camshake
     };
 
+    [QGVAR(choking_victim), position _caller] call EFUNC(common,playConfigSound3D);
+
     [
         {
             params["_configValue","_target"];
@@ -71,6 +73,7 @@ if (local _caller) then {
     _caller setPos (_target modelToWorld [0, -(getNumber (_config >> "damageDistance")), 0]);
     _caller playActionNow getText (_config >> "animation");
     TRACE_1("FINAL",getText (_config >> "animation"));
+    [QGVAR(choking_attacker), position _caller] call EFUNC(common,playConfigSound3D);
 
 };
 

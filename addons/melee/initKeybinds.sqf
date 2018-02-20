@@ -27,8 +27,9 @@
 {
     // Conditions: canInteract
     if !(GVAR(meleeToggle)) exitWith {TRACE_1("melee disabled",GVAR(meleeToggle))};
-    if (GVAR(fighting)) exitWith {TRACE_1("Unit is already performing a Hit",GVAR(fighting))};
+    if (_player getVariable [QGVAR(fighting), false]) exitWith {TRACE_1("Unit is already performing a Hit",_player getVariable [QGVAR(fighting), false])};
     private _target = cursorObject;
+    if !(_target isKindOf "CAManBase") exitWith {TRACE_1("Target is not CAManBase",typeOf _target)};
     if (!GVAR(allowTeamdamageMelee) && (side _target == side ACE_player)) exitWith {LOG("Teamdamage disabled")};
     // Statement
     [ACE_player,_target,"punch"] call FUNC(melee);
@@ -42,8 +43,9 @@
 {
     // Conditions: canInteract
     if !(GVAR(meleeToggle)) exitWith {TRACE_1("melee disabled",GVAR(meleeToggle))};
-    if (GVAR(fighting)) exitWith {TRACE_1("Unit is already performing a Hit",GVAR(fighting))};
+    if (_player getVariable [QGVAR(fighting), false]) exitWith {TRACE_1("Unit is already performing a Hit",_player getVariable [QGVAR(fighting), false])};
     private _target = cursorObject;
+    if !(_target isKindOf "CAManBase") exitWith {TRACE_1("Target is not CAManBase",typeOf _target)};
     //if (player distance _target > 2) exitWith {TRACE_2("failed",_target,player distance _target)};
     if (!GVAR(allowTeamdamageMelee) && (side _target == side ACE_player)) exitWith {LOG("Teamdamage disabled")};
     // Statement
